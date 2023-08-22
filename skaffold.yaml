@@ -1,0 +1,19 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+metadata:
+  name: ticket-booking
+build:
+  local:
+    push: false
+  artifacts:
+      - image: jayabrata180/auth
+        context: auth
+        docker:
+          dockerfile: Dockerfile
+        sync:
+          manual:
+            - src: "src/**/*.ts"
+              dest: .
+manifests:
+  rawYaml:
+    - infra/k8s/auth-deploy.yaml
