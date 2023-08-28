@@ -2,6 +2,9 @@ apiVersion: skaffold/v4beta6
 kind: Config
 metadata:
   name: ticket-booking
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
 build:
   local:
     push: false
@@ -14,6 +17,3 @@ build:
           manual:
             - src: "src/**/*.ts"
               dest: .
-manifests:
-  rawYaml:
-    - infra/k8s/auth-deploy.yaml
