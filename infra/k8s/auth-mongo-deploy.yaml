@@ -12,9 +12,10 @@ spec:
       labels:
         app: auth-mongo
     spec:
+      hostNetwork: true
       containers:
         - name: auth-mongo
-          image: mongo
+          image: gcr.io/ticket-dev-397920/mongo
           resources:
             limits:
               cpu: "0.5"

@@ -12,15 +12,16 @@ spec:
       labels:
         app: auth
     spec:
+      hostNetwork: true
       containers:
         - name: auth
-          image: jayabrata180/auth
-          env: 
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: jwt-secret
-                  key: JWT_KEY
+          image: gcr.io/ticket-dev-397920/auth
+          # env: 
+          #   - name: JWT_KEY
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: jwt-secret
+          #         key: JWT_KEY
           resources:
             limits:
               cpu: "500m"  # 500 milliCPU (0.5 CPU core)
