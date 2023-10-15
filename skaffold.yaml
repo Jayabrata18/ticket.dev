@@ -6,12 +6,10 @@ manifests:
   rawYaml:
     - ./infra/k8s/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticket-dev-397920
+  local:
+    push: false
   artifacts:
-    - image: gcr.io/ticket-dev-397920/auth
+    - image: jayabrata180/auth
       context: auth
       docker:
         dockerfile: Dockerfile

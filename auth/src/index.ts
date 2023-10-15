@@ -11,6 +11,8 @@ import { signupRouter } from "./routes/signup";
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middleware/error-handler";
 
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.set("trust proxy", true);
 app.use(json());
@@ -38,14 +40,14 @@ const start = async () => {
   }
 
   try {
-    await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
+    await mongoose.connect("mongodb://localhost:27017");
 
     console.log("Connected to MongoDb");
   } catch (err) {
     console.error(err);
   }
 
-  app.listen(3000, () => {
+  app.listen(PORT, () => {
     console.log("Listening on port 3000!!!!!!!!");
   });
 };

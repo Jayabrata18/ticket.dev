@@ -15,20 +15,20 @@ spec:
       hostNetwork: true
       containers:
         - name: auth
-          image: gcr.io/ticket-dev-397920/auth
-          # env: 
-          #   - name: JWT_KEY
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: jwt-secret
-          #         key: JWT_KEY
+          image: jayabrata180/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
           resources:
             limits:
-              cpu: "500m"  # 500 milliCPU (0.5 CPU core)
-              memory: "512Mi"  # 512 Mebibytes
+              cpu: "500m" # 500 milliCPU (0.5 CPU core)
+              memory: "512Mi" # 512 Mebibytes
             requests:
-              cpu: "200m"  # 200 milliCPU (0.2 CPU core)
-              memory: "256Mi"  # 256 Mebibytes
+              cpu: "200m" # 200 milliCPU (0.2 CPU core)
+              memory: "256Mi" # 256 Mebibytes
 ---
 apiVersion: v1
 kind: Service
@@ -42,3 +42,6 @@ spec:
       protocol: TCP
       port: 3000
       targetPort: 3000
+  type: LoadBalancer
+  externalIPs:
+    - 192.168.0.10
