@@ -9,7 +9,7 @@ import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
 import { NotFoundError } from "./errors/not-found-error";
-import { errorHandler } from "./middleware/error-handler";
+import { errorHandler } from "./middlewares/error-handler";
 
 
 const PORT = process.env.PORT || 3000;
